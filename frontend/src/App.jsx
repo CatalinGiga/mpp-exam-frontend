@@ -4,7 +4,7 @@ import './App.css'
 import CandidateForm from './components/CandidateForm'
 import './components/CandidateForm.css'
 import PartyChart from './components/PartyChart'
-import { getCandidates, addCandidate, updateCandidate, deleteCandidate, connectWebSocket } from './api'
+import { getCandidates, addCandidate, updateCandidate, deleteCandidate } from './api'
 
 function App() {
   const [candidates, setCandidates] = useState([]);
@@ -13,17 +13,25 @@ function App() {
   const [generating, setGenerating] = useState(false);
   const generatorRef = useRef(null);
 
+  // Polling for candidates
   useEffect(() => {
-    // Initial fetch is now handled by WebSocket on-open message
-    const ws = connectWebSocket((updatedCandidates) => {
-      setCandidates(updatedCandidates);
-    });
-
-    return () => {
-      ws.close();
-      if (generatorRef.current) {
-        clearInterval(generatorRef.current);
+    let polling = true;
+    const fetchCandidates = async () => {
+      try {
+        const res = await getCandidates();
+        setCandidates(res.data);
+      } catch (err) {
+        // Optionally handle error
       }
+    };
+    fetchCandidates();
+    const interval = setInterval(() => {
+      if (polling) fetchCandidates();
+    }, 2000);
+    return () => {
+      polling = false;
+      clearInterval(interval);
+      if (generatorRef.current) clearInterval(generatorRef.current);
     };
   }, []);
 
@@ -38,7 +46,6 @@ function App() {
   const handleSave = async (candidateData) => {
     try {
       if (view === 'add') {
-        // Do not send id; backend will assign it
         const { name, party, image, description } = candidateData;
         await addCandidate({ name, party, image, description });
       } else if (view === 'edit') {
@@ -54,7 +61,6 @@ function App() {
     if (selectedCandidate) {
       try {
         await deleteCandidate(selectedCandidate.id);
-        // WebSocket broadcast handles state update
       } catch (error) {
         console.error('Failed to delete candidate:', error);
       }
@@ -66,7 +72,6 @@ function App() {
       setGenerating(true);
       generatorRef.current = setInterval(async () => {
         try {
-          // Do not send id; backend will assign it
           const randomCandidate = {
             name: `Random ${Math.floor(Math.random() * 100)}`,
             party: ['A', 'B', 'C'][Math.floor(Math.random() * 3)],
