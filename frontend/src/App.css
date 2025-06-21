@@ -247,3 +247,189 @@
   gap: 2rem;
   padding: 2rem 0;
 }
+
+body {
+  background: #232323;
+  color: #fff;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0 1.5rem 0;
+  background: none;
+  font-size: 1.2rem;
+}
+
+.navbar a {
+  color: #4f8cff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #1e90ff;
+  text-decoration: underline;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 60px auto 0 auto;
+  background: #2a2a2a;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #232323;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-actions button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #1e90ff;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.login-actions button:hover {
+  background: #1566b7;
+}
+
+.login-error {
+  color: #ff4d4d;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.vote-container {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  background: #2a2a2a;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  padding: 2.5rem 2rem 2rem 2rem;
+  text-align: center;
+}
+
+.vote-candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.vote-candidate-card {
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-align: center;
+  border: 1.5px solid #333;
+}
+
+.vote-candidate-card:hover {
+  box-shadow: 0 8px 32px rgba(30,144,255,0.18);
+  transform: translateY(-6px) scale(1.03);
+  border-color: #1e90ff;
+}
+
+.vote-candidate-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  border: 4px solid #444;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+}
+
+.vote-candidate-card strong {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.vote-candidate-card div {
+  margin-bottom: 0.3rem;
+}
+
+.vote-candidate-card button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: #1e90ff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.vote-candidate-card button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.vote-candidate-card button:hover:not(:disabled) {
+  background: #1566b7;
+}
+
+.vote-message {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #1e90ff;
+  font-weight: 600;
+}
+
+.fake-news-story {
+  margin-top: 1.2rem;
+  background: #1e90ff22;
+  color: #ffb300;
+  font-size: 1.08rem;
+  font-style: italic;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+  min-height: 48px;
+  font-weight: 600;
+}
