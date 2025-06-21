@@ -14,7 +14,7 @@ export const updateCandidate = (id, candidate) => api.put(`/candidates/${id}`, c
 export const deleteCandidate = (id) => api.delete(`/candidates/${id}`);
 
 export const connectWebSocket = (onMessage) => {
-  const ws = new WebSocket(`ws://localhost:8000/ws/candidates`);
+  const ws = new WebSocket('wss://mpp-exam-backend-yrwm.onrender.com/ws/candidates');
 
   ws.onopen = () => {
     console.log('WebSocket connected');
