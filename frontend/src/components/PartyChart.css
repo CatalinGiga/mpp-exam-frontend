@@ -1,0 +1,15 @@
+.chart-container {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 1000px; /* Match app container width */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5); /* Match app container shadow */
+}
+
+.chart-container h3 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+} 
